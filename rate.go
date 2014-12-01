@@ -14,6 +14,12 @@ func (r Rate) Size(dur time.Duration) Size {
 	return Size(r * Rate(dur/time.Second))
 }
 
+// Duration returns the length of time needed to complete a transfer of the
+// given Size at the given Rate.
+func (r Rate) Duration(s Size) time.Duration {
+	return s.Duration(r)
+}
+
 // NBytes returns the quantity of bytes/second that the Rate represents.
 func (r Rate) NBytes() int64 {
 	return int64(r)
