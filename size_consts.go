@@ -1,6 +1,6 @@
 package size
 
-// Binary byte multiples
+// Binary byte multiples.
 const (
 	_ Size = 1 << (10 * iota)
 	KiB
@@ -11,7 +11,7 @@ const (
 	EiB
 )
 
-// Decimal byte multiples
+// Decimal byte multiples.
 const (
 	KB Size = 1000
 	MB      = KB * 1000
@@ -21,7 +21,7 @@ const (
 	EB      = PB * 1000
 )
 
-// Binary bit multiples, converted to bytes
+// Binary bit multiples, converted to bytes.
 const (
 	_ Size = 1 << (10 * iota) / 8
 	Kibit
@@ -32,7 +32,7 @@ const (
 	Eibit
 )
 
-// Decimal bit multiples, converted to bytes
+// Decimal bit multiples, converted to bytes.
 const (
 	Kbit Size = 1000 / 8
 	Mbit      = Kbit * 1000

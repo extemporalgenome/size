@@ -21,7 +21,7 @@ const (
 	EBs      = PBs * 1000
 )
 
-// Binary bitrate multiples, expressed in bytes/sec.
+// Binary bitrate multiples, expressed in bytes/second.
 const (
 	_ Rate = 1 << (10 * iota) / 8
 	Kibits
@@ -32,7 +32,7 @@ const (
 	Eibits
 )
 
-// Decimal bitrate multiples, expressed in bytes/sec.
+// Decimal bitrate multiples, expressed in bytes/second.
 const (
 	Kbits Rate = 1000 / 8
 	Mbits      = Kbits * 1000

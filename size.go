@@ -1,12 +1,35 @@
 package size
 
-import "time"
+import (
+	"math"
+	"time"
+)
 
-// Size represents a quantity of bytes
+// Size represents a quantity of bytes.
 type Size int64
 
-// Rate calculates the byte-rate needed to reach the input
+// Rate returns the byte-rate required to transfer the input
 // size over the given duration.
 func (s Size) Rate(dur time.Duration) Rate {
 	return Rate(s / Size(dur/time.Second))
+}
+
+// NBytes returns the quantity of bytes that the Size represents.
+func (s Size) NBytes() int64 {
+	return int64(s)
+}
+
+// NBits returns the quantity of bits that the Size represents.
+// If the input Size is not in the non-inclusive range (-1 EiB, 1 EiB),
+// rather than wrap around on overflow, the result will be truncated
+// to the minimum or maximum int64 value; this condition can be checked
+// by passing the result to IsBitOverflow.
+func (s Size) NBits() int64 {
+	switch {
+	case s >= EiB:
+		return math.MaxInt64
+	case s <= -EiB:
+		return math.MinInt64
+	}
+	return int64(s * 8)
 }
